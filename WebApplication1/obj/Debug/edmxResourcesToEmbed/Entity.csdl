@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ClipReducidaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cuenta">
+    <Key>
+      <PropertyRef Name="IDCuenta" />
+    </Key>
+    <Property Name="IDCuenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="fondo" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Operaciones" Relationship="Self.FK__Operacion__IDCue__29572725" FromRole="Cuenta" ToRole="Operaciones" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__IDCuent__267ABA7A" FromRole="Cuenta" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Operaciones">
+    <Key>
+      <PropertyRef Name="IDOperacion" />
+    </Key>
+    <Property Name="IDOperacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hora" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="monto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="fechaEgreso" Type="DateTime" Precision="0" />
+    <Property Name="fechaIngreso" Type="DateTime" Precision="0" />
+    <Property Name="IDCuenta" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cuenta" Relationship="Self.FK__Operacion__IDCue__29572725" FromRole="Operaciones" ToRole="Cuenta" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IDUsuario" />
+    </Key>
+    <Property Name="IDUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nick" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dniT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dniF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IDCuenta" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cuenta" Relationship="Self.FK__Usuario__IDCuent__267ABA7A" FromRole="Usuario" ToRole="Cuenta" />
+  </EntityType>
+  <Association Name="FK__Operacion__IDCue__29572725">
+    <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+    <End Role="Operaciones" Type="Self.Operaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuenta">
+        <PropertyRef Name="IDCuenta" />
+      </Principal>
+      <Dependent Role="Operaciones">
+        <PropertyRef Name="IDCuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario__IDCuent__267ABA7A">
+    <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuenta">
+        <PropertyRef Name="IDCuenta" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="IDCuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ClipReducidaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cuenta" EntityType="Self.Cuenta" />
+    <EntitySet Name="Operaciones" EntityType="Self.Operaciones" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <AssociationSet Name="FK__Operacion__IDCue__29572725" Association="Self.FK__Operacion__IDCue__29572725">
+      <End Role="Cuenta" EntitySet="Cuenta" />
+      <End Role="Operaciones" EntitySet="Operaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario__IDCuent__267ABA7A" Association="Self.FK__Usuario__IDCuent__267ABA7A">
+      <End Role="Cuenta" EntitySet="Cuenta" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

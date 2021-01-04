@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Optimization;
 using WebApplication1.App_Start;
 
+
 namespace WebApplication1
 {
     public class Global : HttpApplication
@@ -21,6 +22,7 @@ namespace WebApplication1
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }
 }
