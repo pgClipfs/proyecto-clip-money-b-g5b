@@ -10,6 +10,7 @@ import { InicioComponent } from './component/inicio/inicio.component';
 import { InicioSesionComponent } from './component/inicio-sesion/inicio-sesion.component';
 import { RegistroComponent } from './component/registro/registro.component';
 import { HomeComponent } from './component/home/home.component';
+import { WelcomeComponent } from './component/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomeComponent } from './component/home/home.component';
     InicioComponent,
     InicioSesionComponent,
     RegistroComponent,
-    HomeComponent
+    HomeComponent,
+    WelcomeComponent
   ],
   
   imports: [
