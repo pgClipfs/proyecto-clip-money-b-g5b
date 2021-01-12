@@ -23,13 +23,12 @@ CREATE TABLE Usuario (
 
 CREATE TABLE Operaciones (
   IDOperacion int primary key identity (1,1)not null,
-  hora time not null,
-  fecha date not null,
   nombre varchar (100) not null,
   monto money not null,
-  fechaEgreso date,
-  fechaIngreso date,
+  fechaOperacion datetime,
   IDCuenta int references Cuenta(IDCuenta) not null
-);
+)
+
+
 
 
