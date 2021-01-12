@@ -13,7 +13,9 @@ CREATE TABLE Usuario (
   IDUsuario int primary key identity (1,1)not null,
   pass varchar(100) not null,
   nick varchar(100) not null,
-  email varchar(100) not null,
+  email varchar(200) not null,
+  nombre varchar (100) not null,
+  apellido varchar (100) not null,
   dni int not null,
   IDCuenta int references Cuenta(IDCuenta) not null,
 );
@@ -29,3 +31,5 @@ CREATE TABLE Operaciones (
   fechaIngreso date,
   IDCuenta int references Cuenta(IDCuenta) not null
 );
+
+
