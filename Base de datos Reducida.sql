@@ -1,4 +1,5 @@
-use clipmoney3
+CREATE DATABASE ClipMoneyReducida
+use ClipMoneyReducida
 
 
 CREATE TABLE Cuenta (
@@ -13,8 +14,7 @@ CREATE TABLE Usuario (
   pass varchar(100) not null,
   nick varchar(100) not null,
   email varchar(100) not null,
-  dniT varchar(100) not null,
-  dniF varchar(100) not null,
+  dni int not null,
   IDCuenta int references Cuenta(IDCuenta) not null,
 );
 
@@ -29,5 +29,3 @@ CREATE TABLE Operaciones (
   fechaIngreso date,
   IDCuenta int references Cuenta(IDCuenta) not null
 );
-
-
