@@ -10,6 +10,9 @@ import { InicioComponent } from './component/inicio/inicio.component';
 import { InicioSesionComponent } from './component/inicio-sesion/inicio-sesion.component';
 import { RegistroComponent } from './component/registro/registro.component';
 import { HomeComponent } from './component/home/home.component';
+import { CarteraComponent } from './component/cartera/cartera.component';
+import { VerMasComponent } from './component/ver-mas/ver-mas.component';
+import { TransferirComponent } from './component/transferir/transferir.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { HomeComponent } from './component/home/home.component';
     InicioComponent,
     InicioSesionComponent,
     RegistroComponent,
-    HomeComponent
+    HomeComponent,
+    CarteraComponent,
+    VerMasComponent,
+    TransferirComponent
   ],
   
   imports: [
