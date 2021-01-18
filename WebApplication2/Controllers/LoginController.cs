@@ -3,7 +3,7 @@ using System.Net;
 using System.Threading;
 using System.Web.Http;
 using WebApplication2.Models;
-
+//using System.Web.Http.Cors;
 
 
 namespace WebApplication2.Controllers
@@ -11,6 +11,7 @@ namespace WebApplication2.Controllers
     /// <summary>
     /// login controller class for authenticate users
     /// </summary>
+    //[EnableCors(origins: "", headers: "", methods: "*")]
     [AllowAnonymous]
     [RoutePrefix("api/login")]
     public class LoginController : ApiController
@@ -33,6 +34,7 @@ namespace WebApplication2.Controllers
 
         [HttpPost]
         [Route("authenticate")]
+        
         public IHttpActionResult Authenticate(LoginRequest login)
         {
             if (login == null)

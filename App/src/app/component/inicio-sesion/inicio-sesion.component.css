@@ -1,0 +1,44 @@
+
+h2{
+    margin-top: 19px;
+    text-align: center;
+}
+h3{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+.txt{
+    text-align: center;
+    display: inline;
+    font-family: 'Montserrat', sans-serif;
+    width: 73px;
+    height: 21px;
+
+}
+
+#usuario{
+    margin-left: 28px;
+}
+input{
+    margin-top: 30px;
+    width: 190px;
+    height: 27px;
+    border: 3px solid #070D59;
+    border-radius: 15px;
+}
+
+.buton{
+    margin-top: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    background: #070D59;
+    border-radius: 15px;
+    color: white;
+    padding: 10px;
+    margin-left: 35%;
+}
+.contraseña{
+    margin-bottom: 20px;
+
+}

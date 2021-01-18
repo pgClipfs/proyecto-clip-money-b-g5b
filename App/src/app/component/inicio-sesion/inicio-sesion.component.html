@@ -1,0 +1,20 @@
+<app-navsup></app-navsup>
+<div>
+    <h2>iniciar sesion</h2>
+
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <h3 class="txt">usuario :</h3>
+        <input type="text"formControlName="usuario"><br>
+        <h3 class="txt">contaseña :</h3>
+        <input type="text" formControlName="contraseña"><br>
+        <h3>¿olvido su contraseña?</h3>
+        <h3>¿no tiene cuenta?</h3>
+        <a routerLink="/register"><h3>registrate</h3></a>
+
+        <button type="submit" class="buton">iniciar sesion</button>
+
+
+
+    </form>
+
+</div>

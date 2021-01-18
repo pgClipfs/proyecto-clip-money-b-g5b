@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-
+using System.Web.Http.Cors;
 namespace WebApplication2
 {
     public static class WebApiConfig
@@ -10,7 +10,11 @@ namespace WebApplication2
         public static void Register(HttpConfiguration config)
         {
             // Configuración y servicios de API web
-
+            //{
+            //    var cors = new EnableCorsAttribute("www.example.com", "", "");
+            //    config.EnableCors(cors);
+            //    // ...
+            //}
             // Rutas de API web
             config.MapHttpAttributeRoutes();
 

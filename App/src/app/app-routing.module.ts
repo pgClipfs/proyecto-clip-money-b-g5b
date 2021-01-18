@@ -1,16 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './componentes/home/home.component';
-import { InicioSesionComponent } from './componentes/inicio-sesion/inicio-sesion.component';
-import { RegistroComponent } from './componentes/registro/registro.component';
-import { WelcomeComponent } from './componentes/welcome/welcome.component';
+//import { from } from 'rxjs';
+import { HomeComponent } from './component/home/home.component';
+import { InicioSesionComponent } from './component/inicio-sesion/inicio-sesion.component';
+import { RegistroComponent} from './component/registro/registro.component';
 
 const routes: Routes = [
   {path:'',component: HomeComponent},
   {path:'login',component: InicioSesionComponent},
-  {path:'register',component: RegistroComponent},
-  {path:'welcome',component: WelcomeComponent}
-  
+  {path:'register',component: RegistroComponent}
 ];
 
 @NgModule({
