@@ -26,4 +26,8 @@ CREATE PROCEDURE [dbo].[nuevo_usuario] @nick varchar(100), @pass varchar(100), @
         AS
         INSERT INTO Usuario (nick, pass,email,nombre,apellido ,dni )  Values(
         @nick, @pass, @email,@nombre,@apellido,@dni)
+		INSERT INTO Cuenta (nombre,fondo,IDUsuario) VALUES ('Cuenta Ahorro',100,@@Identity) 
+		GO
+		
+	
 
