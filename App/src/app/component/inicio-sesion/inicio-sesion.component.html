@@ -4,9 +4,9 @@
 
     <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
         <h3 class="txt">usuario :</h3>
-        <input type="text"formControlName="usuario"><br>
+        <input type="text"formControlName="username"><br>
         <h3 class="txt">contaseña :</h3>
-        <input type="text" formControlName="contraseña"><br>
+        <input type="password" formControlName="password"><br>
         <h3>¿olvido su contraseña?</h3>
         <h3>¿no tiene cuenta?</h3>
         <a routerLink="/register"><h3>registrate</h3></a>
