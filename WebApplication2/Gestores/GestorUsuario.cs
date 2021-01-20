@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Data.SqlClient;
 using System.Configuration;
-using System.Security.Claims;
-
+using System.Data.SqlClient;
 using WebApplication2.Models;
 
 
@@ -13,7 +11,8 @@ namespace WebApplication2.Gestores
 {
     public class GestorUsuario
     {
-        public int AgregarUsuario(Usuario nuevo)
+
+        public int AgregarUsuario(Usuario nuevoUsuario)
         {
             string StrConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             int id = 0;
@@ -25,117 +24,119 @@ namespace WebApplication2.Gestores
                 SqlCommand comm = conn.CreateCommand();
                 comm.CommandText = "nuevo_usuario";
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
-                comm.Parameters.Add(new SqlParameter("@pass", nuevo.Pass));
-                comm.Parameters.Add(new SqlParameter("@nick", nuevo.Nick));
-                comm.Parameters.Add(new SqlParameter("@email", nuevo.Email));
-                comm.Parameters.Add(new SqlParameter("@nombre", nuevo.Nombre));
-                comm.Parameters.Add(new SqlParameter("@apellido", nuevo.Apellido));
-                comm.Parameters.Add(new SqlParameter("@dni", nuevo.Dni));
+                comm.Parameters.Add(new SqlParameter("@nick", nuevoUsuario.Nick));
+                comm.Parameters.Add(new SqlParameter("@pass", nuevoUsuario.Pass));
+                comm.Parameters.Add(new SqlParameter("@email", nuevoUsuario.Email));
+                comm.Parameters.Add(new SqlParameter("@nombre", nuevoUsuario.Nombre));
+                comm.Parameters.Add(new SqlParameter("@apellido", nuevoUsuario.Apellido));
+                comm.Parameters.Add(new SqlParameter("@dni", nuevoUsuario.Dni));
 
                 id = Convert.ToInt32(comm.ExecuteScalar());
             }
             return id;
         }
+        public string ObtenerId(Usuario usuarioId)
+        {
+            string strConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            string idTabla="";
 
-        //    public List<Usuario> ObtenerUsuarios()
-        //    {
-        //        List<Usuario> lista = new List<Usuario>();
-        //        string StrConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                conn.Open();
 
-        //        using (SqlConnection conn = new SqlConnection(StrConn))
-        //        {
-        //            conn.Open();
+                SqlCommand comm = new SqlCommand("obtener_id", conn);
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@nick", usuarioId.Nick));
+                comm.Parameters.Add(new SqlParameter("@pass", usuarioId.Pass));
+                comm.Parameters.Add(new SqlParameter("@id", usuarioId.IDUsuario));
+                SqlDataReader reader = comm.ExecuteReader();
 
-        //            SqlCommand comm = conn.CreateCommand();
-        //            comm.CommandText = "obtener_usuarios";
-        //            comm.CommandType = System.Data.CommandType.StoredProcedure;
+                
+            }
+            return idTabla;
+        }
+        public void ModificarNick(Usuario usuarioModificado)
+        {
+            string StrConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
 
-        //            SqlDataReader dr = comm.ExecuteReader();
-        //            while (dr.Read())
-        //            {
-        //                int id = dr.GetInt32(0);
-        //                string email = dr.GetString(1).Trim();
-        //                string password = dr.GetString(2).Trim();
-        //                string estado = dr.GetString(3);
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
 
-        //                Usuario p = new Usuario(id, email, password, estado);
-        //                lista.Add(p);
-        //            }
+                SqlCommand comm = conn.CreateCommand();
+                comm.CommandText = "modificar_nick";
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@nick", usuarioModificado.Nick));
+                comm.ExecuteNonQuery();
+            }
 
-        //            dr.Close();
-        //        }
+        }
+        public void ModificarPass(Usuario usuarioModificado)
+        {
+            string StrConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
 
-        //        return lista;
-        //    }
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
 
-        //    public void Eliminar(int id)
-        //    {
-        //        string StrConn = ConfigurationManager.ConnectionStrings["BDBilletera"].ToString();
+                SqlCommand comm = conn.CreateCommand();
+                comm.CommandText = "modificar_pass";
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@nick", usuarioModificado.Pass));
+                comm.ExecuteNonQuery();
+            }
 
-        //        using (SqlConnection conn = new SqlConnection(StrConn))
-        //        {
-        //            conn.Open();
+        }
+        public void ModificarEmail(Usuario usuarioModificado)
+        {
+            string StrConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
 
-        //            SqlCommand comm = new SqlCommand("deleteUsuario", conn);
-        //            comm.CommandType = System.Data.CommandType.StoredProcedure;
-        //            comm.Parameters.Add(new SqlParameter("@Id", id));
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
 
-        //            comm.ExecuteNonQuery();
-        //        }
+                SqlCommand comm = conn.CreateCommand();
+                comm.CommandText = "modificar_email";
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@email", usuarioModificado.Email));
+                comm.ExecuteNonQuery();
+            }
 
-        //    }
+        }
+        public void ModificarNombre(Usuario usuarioModificado)
+        {
+            string StrConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
+
+                SqlCommand comm = conn.CreateCommand();
+                comm.CommandText = "modificar_nombre";
+                comm.CommandType = System.Data.CommandType.StoredProcedure;              
+                comm.Parameters.Add(new SqlParameter("@nombre", usuarioModificado.Nombre));
+                comm.ExecuteNonQuery();
+            }
+            
+        }
+
+        public void ModificarApellido(Usuario usuarioModificado)
+        {
+            string StrConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(StrConn))
+            {
+                conn.Open();
+
+                SqlCommand comm = conn.CreateCommand();
+                comm.CommandText = "modificar_apellido";
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@apellido", usuarioModificado.Apellido));
+                comm.ExecuteNonQuery();
+            }
+
+        }
 
 
-        //    public Usuario ObtenerPorId(int id)
-        //    {
-        //        Usuario p = null;
-        //        string StrConn = ConfigurationManager.ConnectionStrings["BDBilletera"].ToString();
-
-        //        using (SqlConnection conn = new SqlConnection(StrConn))
-        //        {
-        //            conn.Open();
-
-        //            SqlCommand comm = new SqlCommand("obtener_usuario", conn);
-        //            comm.CommandType = System.Data.CommandType.StoredProcedure;
-        //            comm.Parameters.Add(new SqlParameter("@id", id));
-
-        //            SqlDataReader dr = comm.ExecuteReader();
-        //            if (dr.Read())
-        //            {
-        //                string nombre = dr.GetString(1);
-        //                string apellido = dr.GetString(2);
-        //                string dni = dr.GetString(3);
-        //                string fechaNacimiento = dr.GetString(6);
-        //                string cuil_cuit = dr.GetString(7);
-
-        //                p = new Usuario(id, nombre, apellido, dni, fechaNacimiento, cuil_cuit);
-        //            }
-        //            dr.Close();
-        //        }
-        //        return p;
-        //    }
-
-
-        //    public void ModificarUsuario(Usuario p)
-        //    {
-        //        string StrConn = ConfigurationManager.ConnectionStrings["BDBilletera"].ToString();
-
-        //        using (SqlConnection conn = new SqlConnection(StrConn))
-        //        {
-        //            conn.Open();
-
-        //            SqlCommand comm = conn.CreateCommand();
-        //            comm.CommandText = "update_Usuario";
-        //            comm.CommandType = System.Data.CommandType.StoredProcedure;
-        //            comm.Parameters.Add(new SqlParameter("@nombre", p.Nombre));
-        //            comm.Parameters.Add(new SqlParameter("@apellido", p.Apellido));
-        //            comm.Parameters.Add(new SqlParameter("@dni", p.Dni));
-        //            comm.Parameters.Add(new SqlParameter("@fechaNacimiento", p.FechaNacimiento));
-        //            comm.Parameters.Add(new SqlParameter("@cuil_cuit", p.Cuil_Cuit));
-        //            comm.Parameters.Add(new SqlParameter("@Id", p.Id));
-
-        //            comm.ExecuteNonQuery();
-        //        }
-        //    }
     }
 }

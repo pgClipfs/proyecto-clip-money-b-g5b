@@ -7,9 +7,11 @@ namespace WebApplication2.Models
 {
     public class LoginRequest
     {
-        private string username;
-        private string password;
-        public string Username { get => username; set => username = value; }
-        public string Password { get=> password; set=>password = value; }
+        public string username { get; set; }
+        public string password { get; set; }
+
+        //public string Username { get => username; set=>username = value; }
+        //public string Password { get => password; set => password = value; }
     }
+
 }

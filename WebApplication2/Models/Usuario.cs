@@ -7,51 +7,30 @@ namespace WebApplication2.Models
 {
     public class Usuario
     {
-        private int idusuario;
+        public int IDUsuario { get; set; }
 
-        private string pass;
+        public string Nick { get; set; }
 
-        private string nick;
+        public string Pass { get; set; }
 
-        private string email;
+        public string Email { get; set; }
 
-        private string nombre;
+        public string Nombre { get; set; }
 
-        private string apellido;
+        public string Apellido { get; set; }
 
-        private int dni;
+        public int Dni { get; set; }
 
-
-
-        public Usuario(int idusuario, string pass, string nick, string email, string nombre, string apellido, int dni)
+        public Usuario(int iDUsuario, string pass, string nick, string email, string nombre, string apellido, int dni)
         {
-            this.Idusuario = idusuario;
-            this.pass = pass;
-            this.Nick = nick;
-            this.Email = email;
+            this.IDUsuario = iDUsuario;
             this.Nombre = nombre;
             this.Apellido = apellido;
+            this.Pass = pass;
+            this.Nick = nick;
+            this.Email = email;
             this.Dni = dni;
         }
-        public Usuario()
-        {
-        }
-
-        public int Idusuario { get => idusuario; set => idusuario = value; }
-        public string Pass { get => pass; set => pass = value; }
-        public string Nick { get => nick; set => nick = value; }
-        public string Email { get => email; set => email = value; }
-        public string Nombre { get => nombre; set => nombre = value; }
-        public string Apellido { get => apellido; set => apellido = value; }
-        public int Dni { get => dni; set => dni = value; }
-
-
-
-
-
-
-
-
     }
 
 

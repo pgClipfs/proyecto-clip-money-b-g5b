@@ -25,7 +25,7 @@ export class InicioSesionComponent implements OnInit {
   }
 
   onSubmit(){
-    const login =JSON.stringify(this.formGroup.value);
+    const login = this.formGroup.value;
     console.log(login);
     console.log(this.formGroup)
     this.usuario.postUsuario(login).subscribe(Body => console.log(Body));

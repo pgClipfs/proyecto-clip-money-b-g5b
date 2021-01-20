@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "clipFront"
+    }
+  },
+  "defaultProject": "clipFront",
+  "cli": {
+    "analytics": "d50d1904-55e6-47fe-925f-f439e9393ee4"
+  }
 }
