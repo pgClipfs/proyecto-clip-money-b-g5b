@@ -36,14 +36,14 @@ namespace WebApplication2.Controllers
         }
 
         [HttpPost]
-        [Route("Modificar Usuario")]
+        [Route("modifyUser")]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public Usuario PostModificado(Usuario usuariomodifcado)
         {
-            int idAutogenerado;
+            int idAuto ;
             GestorUsuario mUsuario = new GestorUsuario();
-            idAutogenerado = mUsuario.ObtenerId(usuariomodifcado);
-
+            idAuto = mUsuario.ObtenerId(usuariomodifcado);
+            usuariomodifcado = mUsuario.ModificarUsuario(usuariomodifcado,  idAuto);
             return usuariomodifcado;
         }
 
