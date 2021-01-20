@@ -21,13 +21,13 @@ namespace WebApplication2.Models
 
         public int Dni { get; set; }
 
-        public Usuario(int iDUsuario, string pass, string nick, string email, string nombre, string apellido, int dni)
+        public Usuario(int iDUsuario, string nick, string pass,  string email, string nombre, string apellido, int dni)
         {
             this.IDUsuario = iDUsuario;
+            this.Nick = nick;
+            this.Pass = pass;
             this.Nombre = nombre;
             this.Apellido = apellido;
-            this.Pass = pass;
-            this.Nick = nick;
             this.Email = email;
             this.Dni = dni;
         }

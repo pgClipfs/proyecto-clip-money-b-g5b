@@ -16,6 +16,7 @@ namespace WebApplication2.Gestores
         {
             string StrConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             int id = 0;
+            
 
             using (SqlConnection conn = new SqlConnection(StrConn))
             {
@@ -32,13 +33,16 @@ namespace WebApplication2.Gestores
                 comm.Parameters.Add(new SqlParameter("@dni", nuevoUsuario.Dni));
 
                 id = Convert.ToInt32(comm.ExecuteScalar());
+
+
             }
             return id;
         }
-        public string ObtenerId(Usuario usuarioId)
+
+        public int ObtenerId(Usuario usuarioId)
         {
             string strConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            string idTabla="";
+            int idUsuario = 0;
 
             using (SqlConnection conn = new SqlConnection(strConn))
             {
@@ -48,94 +52,39 @@ namespace WebApplication2.Gestores
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
                 comm.Parameters.Add(new SqlParameter("@nick", usuarioId.Nick));
                 comm.Parameters.Add(new SqlParameter("@pass", usuarioId.Pass));
-                comm.Parameters.Add(new SqlParameter("@id", usuarioId.IDUsuario));
+                
                 SqlDataReader reader = comm.ExecuteReader();
 
-                
+                if (reader.HasRows)
+                {
+                    idUsuario = reader.GetInt32(0);
+                }
             }
-            return idTabla;
-        }
-        public void ModificarNick(Usuario usuarioModificado)
-        {
-            string StrConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-
-            using (SqlConnection conn = new SqlConnection(StrConn))
-            {
-                conn.Open();
-
-                SqlCommand comm = conn.CreateCommand();
-                comm.CommandText = "modificar_nick";
-                comm.CommandType = System.Data.CommandType.StoredProcedure;
-                comm.Parameters.Add(new SqlParameter("@nick", usuarioModificado.Nick));
-                comm.ExecuteNonQuery();
-            }
+            return idUsuario;
 
         }
-        public void ModificarPass(Usuario usuarioModificado)
-        {
-            string StrConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+        //public void ModificarUsuario(int idAutogenerado)
+        //{
+        //    Usuario usuarioModificado = new Usuario();
+        //    string StrConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
 
-            using (SqlConnection conn = new SqlConnection(StrConn))
-            {
-                conn.Open();
+        //    using (SqlConnection conn = new SqlConnection(StrConn))
+        //    {
+        //        conn.Open();
 
-                SqlCommand comm = conn.CreateCommand();
-                comm.CommandText = "modificar_pass";
-                comm.CommandType = System.Data.CommandType.StoredProcedure;
-                comm.Parameters.Add(new SqlParameter("@nick", usuarioModificado.Pass));
-                comm.ExecuteNonQuery();
-            }
+        //        SqlCommand comm = conn.CreateCommand();
+        //        comm.CommandText = "modificar_usuario";
+        //        comm.CommandType = System.Data.CommandType.StoredProcedure;
+        //        comm.Parameters.Add(new SqlParameter("@nick", usuarioModificado.Nick));
+        //        comm.Parameters.Add(new SqlParameter("@pass", usuarioModificado.Pass));
+        //        comm.Parameters.Add(new SqlParameter("@email", usuarioModificado.Email));
+        //        comm.Parameters.Add(new SqlParameter("@nombre", usuarioModificado.Nombre));
+        //        comm.Parameters.Add(new SqlParameter("@apellido", usuarioModificado.Apellido));
+        //        comm.Parameters.Add(new SqlParameter("@dni", usuarioModificado.Dni));
+        //        comm.ExecuteNonQuery();
+        //    }
 
-        }
-        public void ModificarEmail(Usuario usuarioModificado)
-        {
-            string StrConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-
-            using (SqlConnection conn = new SqlConnection(StrConn))
-            {
-                conn.Open();
-
-                SqlCommand comm = conn.CreateCommand();
-                comm.CommandText = "modificar_email";
-                comm.CommandType = System.Data.CommandType.StoredProcedure;
-                comm.Parameters.Add(new SqlParameter("@email", usuarioModificado.Email));
-                comm.ExecuteNonQuery();
-            }
-
-        }
-        public void ModificarNombre(Usuario usuarioModificado)
-        {
-            string StrConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-
-            using (SqlConnection conn = new SqlConnection(StrConn))
-            {
-                conn.Open();
-
-                SqlCommand comm = conn.CreateCommand();
-                comm.CommandText = "modificar_nombre";
-                comm.CommandType = System.Data.CommandType.StoredProcedure;              
-                comm.Parameters.Add(new SqlParameter("@nombre", usuarioModificado.Nombre));
-                comm.ExecuteNonQuery();
-            }
-            
-        }
-
-        public void ModificarApellido(Usuario usuarioModificado)
-        {
-            string StrConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-
-            using (SqlConnection conn = new SqlConnection(StrConn))
-            {
-                conn.Open();
-
-                SqlCommand comm = conn.CreateCommand();
-                comm.CommandText = "modificar_apellido";
-                comm.CommandType = System.Data.CommandType.StoredProcedure;
-                comm.Parameters.Add(new SqlParameter("@apellido", usuarioModificado.Apellido));
-                comm.ExecuteNonQuery();
-            }
-
-        }
+        //}
 
 
     }

@@ -16,8 +16,6 @@ namespace WebApplication2.Models
         {
             string strConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             bool result = false;
-            //string nick = loginRequest.username;
-            string pass = loginRequest.password;
 
             using (SqlConnection conn = new SqlConnection(strConn))
             {
@@ -26,9 +24,8 @@ namespace WebApplication2.Models
                 SqlCommand comm = new SqlCommand("generar_login", conn);
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
                 comm.Parameters.Add(new SqlParameter("@nick", loginRequest.username));
-                comm.Parameters.Add(new SqlParameter("@pass", pass));
+                comm.Parameters.Add(new SqlParameter("@pass", loginRequest.password));
 
-                //(DEMO) CRUD CON ASP .NET MVC5, C# Y ANGULAR.JS - VIDEO 04
 
                 SqlDataReader reader = comm.ExecuteReader();
 

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "clipFront": {
+    "App": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "../WebApplication2/bundles",
+            "outputPath": "../WebApplication2/Bundles",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -39,7 +39,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -62,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "clipFront:build"
+            "browserTarget": "App:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "clipFront:build:production"
+              "browserTarget": "App:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "clipFront:build"
+            "browserTarget": "App:build"
           }
         },
         "test": {
@@ -110,19 +109,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "clipFront:serve"
+            "devServerTarget": "App:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "clipFront:serve:production"
+              "devServerTarget": "App:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "clipFront",
+  "defaultProject": "App",
   "cli": {
-    "analytics": "d50d1904-55e6-47fe-925f-f439e9393ee4"
+    "analytics": false
   }
 }

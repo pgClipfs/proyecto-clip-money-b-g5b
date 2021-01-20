@@ -15,8 +15,8 @@ export class InicioSesionComponent implements OnInit {
   ) { }
   form(){
     this.formGroup=this.fb.group({
-      usuario:[""],
-      contraseña:[""],
+      username:[""],
+      password:[""],
     
      });
   }
@@ -29,7 +29,7 @@ export class InicioSesionComponent implements OnInit {
     console.log(login);
     console.log(this.formGroup)
     this.usuario.postUsuario(login).subscribe(Body => console.log(Body));
-
+    
     
   }
 }

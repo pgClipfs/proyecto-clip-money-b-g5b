@@ -26,13 +26,25 @@ namespace WebApplication2.Controllers
         [HttpPost]
         [Route("newUser")]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public Usuario Post(Usuario usuario)
+        public Usuario PostNuevo(Usuario usuario)
         {
             int id;
             GestorUsuario gUsuario = new GestorUsuario();
             id = gUsuario.AgregarUsuario(usuario);
             usuario.IDUsuario = id;
             return usuario;
+        }
+
+        [HttpPost]
+        [Route("Modificar Usuario")]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public Usuario PostModificado(Usuario usuariomodifcado)
+        {
+            int idAutogenerado;
+            GestorUsuario mUsuario = new GestorUsuario();
+            idAutogenerado = mUsuario.ObtenerId(usuariomodifcado);
+
+            return usuariomodifcado;
         }
 
     }
