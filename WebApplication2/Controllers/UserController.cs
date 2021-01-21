@@ -11,7 +11,7 @@ using WebApplication2.Gestores;
 
 namespace WebApplication2.Controllers
 {
-    //[AllowAnonymous]
+    [AllowAnonymous]
     [RoutePrefix("api/register")]
     public class UserController : ApiController
     {

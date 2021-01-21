@@ -19,10 +19,12 @@ export class RegistroComponent implements OnInit {
     
     form(){
       this.formGroup=this.fb.group({
-        usuario:[""],
-        contraseña:[""],
-        contraseña2:[""],
-        email:["",[Validators.email]]
+        Nick:[""],
+        Pass:[""],
+        Email:["",[Validators.email]],
+        Nombre:[""],
+        Apellido:[""],
+        Dni:[""]
        });
     }
  
@@ -33,9 +35,9 @@ export class RegistroComponent implements OnInit {
     
     onSubmit(){
       
-      const body = JSON.stringify(this.formGroup.value);
+      const body = this.formGroup.value;
       
-      this.usuario.getUsuarioMet().subscribe(a => console.log(a))
+      this.usuario.NewUser(body).subscribe(a => console.log(a))
 
     }
 

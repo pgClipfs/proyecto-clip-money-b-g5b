@@ -15,9 +15,11 @@ export class UsuarioService {
 
   base1='https://localhost:44397/api/login/authenticate'
 
-  getUsuarioMet() :Observable<any>{
+  base2='https://localhost:44397/api/register/newUser'
+
+NewUser(usuario : any) :Observable<any>{
     
-    return this.httpuser.get(this.base);
+    return this.httpuser.post(this.base2,usuario);
    
   }
 
