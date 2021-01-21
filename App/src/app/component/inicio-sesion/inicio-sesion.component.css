@@ -1,5 +1,5 @@
 
-h2{
+/* h2{
     margin-top: 19px;
     text-align: center;
 }
@@ -25,8 +25,8 @@ input{
     height: 27px;
     border: 3px solid #070D59;
     border-radius: 15px;
-}
-
+} */
+/* 
 .buton{
     margin-top: 30px;
     font-weight: 600;
@@ -41,4 +41,14 @@ input{
 .contraseña{
     margin-bottom: 20px;
 
+} */
+
+.card-con {
+    max-width: auto;
+    margin: 15px;
+}
+
+.separator 
+{
+    margin: 10px;
 }
