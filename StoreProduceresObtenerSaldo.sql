@@ -18,7 +18,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE obtener_id  @nick nvarchar(100), @pass nvarchar(100)
-AS
-SELECT IDUsuario FROM Usuario WHERE nick = @nick AND pass = @pass 
-
+CREATE PROCEDURE obtener_saldo @idCuenta int
+AS 
+SELECT * FROM Cuenta WHERE IDCuenta = @idCuenta
+GO

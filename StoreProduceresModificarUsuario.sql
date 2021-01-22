@@ -19,6 +19,6 @@ GO
 -- Description:	<Description,,>
 -- =============================================
 CREATE PROCEDURE modificar_usuario @id int,  @nick varchar(100), @pass varchar(100), @email varchar(200), @nombre varchar(100), @apellido varchar(100),@dni int
- AS UPDATE Usuario SET Nick = @nick, Pass = @pass, Email = @email, Nombre = @nombre, Apellido= @apellido, Dni = @dni  
+ AS UPDATE Usuario SET nick = @nick, pass = @pass, email = @email, nombre = @nombre, apellido= @apellido, dni = @dni  
  WHERE IDUsuario = @id
  GO

@@ -14,10 +14,11 @@ namespace WebApplication2.Gestores
         {
             Operaciones extraer = new Operaciones();
 
+
             return extraer;
         }
 
-        public Operaciones Ingresar(int idCuenta)
+        public Operaciones Deposito(int idCuenta)
         {
             Operaciones ingresar = new Operaciones();
 
