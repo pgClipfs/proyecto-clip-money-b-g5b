@@ -1,28 +1,63 @@
 <app-navsup></app-navsup>
-<div>
-    <h2>Registro</h2>
+<mat-card>
+    <mat-card-title>Registro</mat-card-title>
     <form  [formGroup]= "formGroup" (ngSubmit)="onSubmit()" >
-        <h3>Usuario :</h3>
-        <input type="text" formControlName="usuario" ><br>
-        <h3>Contaseña :</h3>
-        <input type="text" formControlName="contraseña"><br>
-        <h3>Repetir<br> contraseña :</h3>
-        <input type="text" formControlName="contraseña2"><br>
-        <h3>email :</h3>
-        <input type="email" formControlName="email"><br>
 
-        <h3>Frente y Dorso DNI</h3>
-        <div class="fotos">
 
-        </div>
-        <div class="lan">
-        <h5 class="las">Al registrarte, aceptas nuestras<br> Condiciones de uso y Política de <br>privacidad.</h5>
-        
-        <input type="checkbox" name="" id="terminos">
-        </div>
+        <div> 
+        <mat-form-field appearance="fill" class="separator">
+            <mat-label>Usuario</mat-label>
+            <input matInput type="text"formControlName="Nick">
+        </mat-form-field>
+   
 
-        <button type="submit" class="buton" >iniciar sesion</button>
+
+        <mat-form-field appearance="fill" class="separator">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password"formControlName="Pass">
+        </mat-form-field>
+    </div>
+
+         <div> 
+             
+        <mat-form-field appearance="fill" class="separator"> 
+            <mat-label> Repetir contraseña</mat-label>
+            <input matInput type="password" > <!-- REVISAR  REPEAT PASSWORD FUNCION -->
+        </mat-form-field>
+ 
+
+
+        <mat-form-field appearance="fill" class="separator">
+            <mat-label>email</mat-label>
+            <input matInput type="email"formControlName="Email">
+        </mat-form-field>
+    </div>
+
+    <div> 
+        <mat-form-field appearance="fill" class="separator">
+            <mat-label>Nombre</mat-label>
+            <input matInput type="text"formControlName="Nombre">
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill" class="separator">
+            <mat-label>Apellido</mat-label>
+            <input matInput type="text"formControlName="Apellido">
+        </mat-form-field>
+    </div>
+
+        <mat-form-field appearance="fill" class="separator">
+            <mat-label>DNI</mat-label>
+            <input  matInput type="number"formControlName="Dni">
+        </mat-form-field>
+
+
+        <mat-card-subtitle>Al darle al boton de registro aceptas nuestros terminos y condiciones</mat-card-subtitle>
+
+
+ 
+ 
+
+        <button mat-raised-button color="primary" type="submit" class="buton" >Registrarse </button>
     </form>
-
-
-</div>
+</mat-card>

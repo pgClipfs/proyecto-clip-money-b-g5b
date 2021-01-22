@@ -13,3 +13,14 @@
     display: inline;
     align-content: center;
 }
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.separator 
+{
+    margin: 10px;
+}

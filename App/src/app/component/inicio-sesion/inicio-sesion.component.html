@@ -1,24 +1,26 @@
 <app-navsup></app-navsup>
-<div>
-    <h2>iniciar sesion</h2>
+        <mat-card class="card-con">
+        <mat-card-title>Inicio Sesion</mat-card-title>
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
 
-    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-        <h3 class="txt">usuario :</h3>
-        <input type="text"formControlName="username"><br>
-        <h3 class="txt">contaseña :</h3>
-<<<<<<< HEAD
-        <input type="text" formControlName="password"><br>
-=======
-        <input type="password" formControlName="password"><br>
->>>>>>> d9f7ecd45a1042d9bc880747e0ef5b01012c9ea3
-        <h3>¿olvido su contraseña?</h3>
-        <h3>¿no tiene cuenta?</h3>
-        <a routerLink="/register"><h3>registrate</h3></a>
+        <mat-form-field appearance="fill" class="separator">
+            <mat-label>Usuario</mat-label>
+            <input matInput type="text"formControlName="username">
+        </mat-form-field>
 
-        <button type="submit" class="buton">iniciar sesion</button>
+<mat-divider></mat-divider>
+
+
+<mat-form-field appearance="fill" class="separator">
+    <mat-label>Contraseña</mat-label>
+    <input matInput type="password"formControlName="password">
+</mat-form-field>
+        <mat-card-actions>
+            <button type="submit" mat-raised-button color="primary">Login</button>
+        </mat-card-actions>
+        
 
 
 
     </form>
-
-</div>
+        </mat-card>

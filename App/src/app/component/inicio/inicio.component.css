@@ -14,3 +14,9 @@
         border-radius: 15px;
         color: white;
     }
+
+    .mat-card-con {
+        max-width: 600px;
+        margin:25px;
+    }
+    
