@@ -9,7 +9,7 @@ namespace WebApplication2.Models
     {
         public int IDOperacion { get; set; }
         public TimeSpan Hora { get; set; }
-        public string Nombre { get; set; }
+        public string NombreOperacion { get; set; }
         public decimal Monto { get; set; }
 
         public DateTime fechaoperacion { get; set; }

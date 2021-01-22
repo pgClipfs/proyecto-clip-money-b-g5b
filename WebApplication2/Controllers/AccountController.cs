@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
-using System.Threading;
+using System.Net.Http;
 using System.Web.Http;
-using WebApplication2.Models;
 using System.Web.Http.Cors;
+using WebApplication2.Models;
 using WebApplication2.Gestores;
 
 namespace WebApplication2.Controllers
@@ -15,14 +17,16 @@ namespace WebApplication2.Controllers
         [HttpPost]
         [Route("modifyBalance")]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IHttpActionResult PostSaldo(Usuario usuario, Operaciones nombreOperacion)
+        public IHttpActionResult PostSaldo([FromBody] Usuario usuario, [FromBody] string nombreOperacion, [FromBody] decimal monto)
         {
             int idCuenta;
+            int idUsuario;
             decimal saldo;
-            int idUsuario = usuario.IDUsuario;
+            GestorUsuario mUsuario = new GestorUsuario();
+            idUsuario = mUsuario.ObtenerId(usuario);
             GestorCuenta gCuenta = new GestorCuenta();
             idCuenta = gCuenta.ObtenerIdCuenta(idUsuario);
-            saldo = gCuenta.ModificarSaldo(idCuenta, nombreOperacion);
+            saldo = gCuenta.ModificarSaldo(idCuenta, nombreOperacion, monto);
             if (saldo == 0)
             {
                 return NotFound();

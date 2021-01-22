@@ -30,7 +30,7 @@ namespace WebApplication2.Gestores
             return idCuenta;
         }
 
-        public decimal ModificarSaldo(int idCuenta, Operaciones tipoOperacion)
+        public decimal ModificarSaldo(int idCuenta, string tipoOperacion, decimal monto)
         {
             string strConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             decimal saldo = 0;
@@ -53,23 +53,23 @@ namespace WebApplication2.Gestores
 
             }
 
-            if (tipoOperacion.Nombre == "Deposito")
+            if (tipoOperacion == "Deposito")
             {
-                nuevoSaldo = saldo + tipoOperacion.Monto;
+                nuevoSaldo = saldo + monto;
             }
-            if (tipoOperacion.Nombre == "Extraccion")
+            if (tipoOperacion == "Extraccion")
             {
-                nuevoSaldo = saldo - tipoOperacion.Monto;
+                nuevoSaldo = saldo - monto;
             }
-            if (tipoOperacion.Nombre == "Transferencia")
+            if (tipoOperacion == "Transferencia")
             {
-                nuevoSaldo = saldo - tipoOperacion.Monto;
+                nuevoSaldo = saldo - monto;
             }
-            if (tipoOperacion.Nombre == "Giro al Descubierto")
+            if (tipoOperacion == "Giro al Descubierto")
             {
-                if (tipoOperacion.Monto == (saldo * 0.10M))
+                if (monto == (saldo * 0.10M))
                 {
-                    nuevoSaldo = saldo - tipoOperacion.Monto;
+                    nuevoSaldo = saldo - monto;
                 }
                 else
                 {
