@@ -55,13 +55,9 @@ namespace WebApplication2.Gestores
                 comm.Parameters.Add(new SqlParameter("@pass", usuarioId.Pass));
 
                 idUsuario = Convert.ToInt32(comm.ExecuteScalar());
-                //SqlDataReader reader = comm.ExecuteReader();
-
-                //if (reader.HasRows)
-                //{
-                //    idUsuario = reader.GetInt32(0);
-                //}
+                
             }
+
             return idUsuario;
         }
 

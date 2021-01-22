@@ -11,40 +11,56 @@ using WebApplication2.Gestores;
 
 namespace WebApplication2.Controllers
 {
-    //[AllowAnonymous]
+    [AllowAnonymous]
     [RoutePrefix("api/register")]
     public class UserController : ApiController
     {
         
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IEnumerable<Usuario> Get()
-        {
-            List<Usuario> lista = new List<Usuario>();
-            return lista;
-        }
+        //[EnableCors(origins: "*", headers: "*", methods: "*")]
+        //public IEnumerable<Usuario> Get()
+        //{
+        //    List<Usuario> lista = new List<Usuario>();
+        //    return lista;
+        //}
         
         [HttpPost]
         [Route("newUser")]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public Usuario PostNuevo(Usuario usuario)
+        public IHttpActionResult PostNuevo(Usuario usuario)
         {
             int id;
             GestorUsuario gUsuario = new GestorUsuario();
             id = gUsuario.AgregarUsuario(usuario);
             usuario.IDUsuario = id;
-            return usuario;
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(usuario);
+            }
         }
 
         [HttpPost]
         [Route("modifyUser")]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public Usuario PostModificado(Usuario usuariomodifcado)
+        public IHttpActionResult PostModificado(Usuario usuariomodifcado)
         {
             int idAuto ;
             GestorUsuario mUsuario = new GestorUsuario();
             idAuto = mUsuario.ObtenerId(usuariomodifcado);
             usuariomodifcado = mUsuario.ModificarUsuario(usuariomodifcado,  idAuto);
-            return usuariomodifcado;
+
+            if (usuariomodifcado == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(usuariomodifcado);
+            }
+            
         }
 
     }
