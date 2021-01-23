@@ -30,7 +30,31 @@ namespace WebApplication2.Gestores
             return idCuenta;
         }
 
-        public decimal ModificarSaldo(int idCuenta, string tipoOperacion, decimal monto)
+        public decimal ObtenerSaldo(int idCuenta)
+        {
+
+            string strConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            decimal saldo = 0 ;
+            using (SqlConnection connec = new SqlConnection(strConn))
+            {
+                connec.Open();
+
+                SqlCommand comm = new SqlCommand("obtener_saldo", connec);
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@idCuenta", idCuenta));
+
+                SqlDataReader reader = comm.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    saldo = reader.GetInt32(2);
+                }
+
+            }
+            return saldo;
+        }
+
+        public decimal ModificarSaldo(int idCuenta, Operaciones nuevaOperacion)
         {
             string strConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             decimal saldo = 0;
@@ -53,32 +77,32 @@ namespace WebApplication2.Gestores
 
             }
 
-            if (tipoOperacion == "Deposito")
-            {
-                nuevoSaldo = saldo + monto;
-            }
-            if (tipoOperacion == "Extraccion")
-            {
-                nuevoSaldo = saldo - monto;
-            }
-            if (tipoOperacion == "Transferencia")
-            {
-                nuevoSaldo = saldo - monto;
-            }
-            if (tipoOperacion == "Giro al Descubierto")
-            {
-                if (monto == (saldo * 0.10M))
-                {
-                    nuevoSaldo = saldo - monto;
-                }
-                else
-                {
-                    //Mensaje de error "Monto no apto para giro al descubierto"
-                    //MessageBox.Show($"");
-                    //Request.Flash("success", "Monto no apto para giro al descubierto");
-                }
+            //if (tipoOperacion == "Deposito")
+            //{
+            //    nuevoSaldo = saldo + monto;
+            //}
+            //if (tipoOperacion == "Extraccion")
+            //{
+            //    nuevoSaldo = saldo - monto;
+            //}
+            //if (tipoOperacion == "Transferencia")
+            //{
+            //    nuevoSaldo = saldo - monto;
+            //}
+            //if (tipoOperacion == "Giro al Descubierto")
+            //{
+            //    if (monto == (saldo * 0.10M))
+            //    {
+            //        nuevoSaldo = saldo - monto;
+            //    }
+            //    else
+            //    {
+            //        //Mensaje de error "Monto no apto para giro al descubierto"
+            //        //MessageBox.Show($"");
+            //        //Request.Flash("success", "Monto no apto para giro al descubierto");
+            //    }
 
-            }
+            //}
             using (SqlConnection connec = new SqlConnection(strConn))
             {
                 connec.Open();

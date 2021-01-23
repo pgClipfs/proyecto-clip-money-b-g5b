@@ -15,7 +15,7 @@ namespace WebApplication2.Gestores
         public int AgregarUsuario(Usuario nuevoUsuario)
         {
             string StrConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            int id = 0;
+            int id;
             
 
             using (SqlConnection conn = new SqlConnection(StrConn))

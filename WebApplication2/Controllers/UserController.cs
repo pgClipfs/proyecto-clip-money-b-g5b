@@ -65,9 +65,6 @@ namespace WebApplication2.Controllers
             Usuario usuario = null;
             GestorUsuario gUsuario = new GestorUsuario();
             usuario = gUsuario.ObtenerUsuarioPorLogin(login);
-            //var target = new LocalStorage(null);
-            //Storage
-                //(usuario.IDUsuario);
 
             if (usuario == null)
             {
