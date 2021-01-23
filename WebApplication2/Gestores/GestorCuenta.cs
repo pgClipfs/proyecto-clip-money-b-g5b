@@ -45,9 +45,9 @@ namespace WebApplication2.Gestores
 
                 SqlDataReader reader = comm.ExecuteReader();
 
-                if (reader.HasRows)
+                if (reader.Read())
                 {
-                    saldo = reader.GetInt32(2);
+                    saldo = reader.GetDecimal(2);
                 }
 
             }
@@ -70,7 +70,7 @@ namespace WebApplication2.Gestores
                                 
                 SqlDataReader reader = comm.ExecuteReader();
 
-                if (reader.HasRows)
+                if (reader.Read())
                 {
                     saldo = reader.GetInt32(2);
                 }
