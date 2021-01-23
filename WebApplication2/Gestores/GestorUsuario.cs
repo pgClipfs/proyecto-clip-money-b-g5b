@@ -38,10 +38,9 @@ namespace WebApplication2.Gestores
             }
             return id;
         }
-
-        public int ObtenerId(Usuario usuarioId)
+        public int ObtenerId(Usuario usuario)
         {
-            
+
             string strConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             int idUsuario = 0;
 
@@ -51,48 +50,73 @@ namespace WebApplication2.Gestores
 
                 SqlCommand comm = new SqlCommand("obtener_id", connec);
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
-                comm.Parameters.Add(new SqlParameter("@nick", usuarioId.Nick));
-                comm.Parameters.Add(new SqlParameter("@pass", usuarioId.Pass));
+                comm.Parameters.Add(new SqlParameter("@nick", usuario.Nick));
+                comm.Parameters.Add(new SqlParameter("@pass", usuario.Pass));
 
                 idUsuario = Convert.ToInt32(comm.ExecuteScalar());
-                
+
             }
 
             return idUsuario;
         }
+        public int ObtenerIdPorLoguin(LoginRequest login)
+        {
+            
+            string strConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            int idUsuario;
 
-        //Creo que tal vez es mejor pasar el login con un objeto LoginRequest en vez del objeto usuario
-        //No porque le paso un usuario al post de modificar en el controller
-        //public int ObtenerId(LoginRequest loginRequest)
-        //{
-        //    
-        //    string strConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-        //    int idUsuario = 0;
+            using (SqlConnection connec = new SqlConnection(strConn))
+            {
+                connec.Open();
 
-        //    using (SqlConnection conn = new SqlConnection(strConn))
-        //    {
-        //        conn.Open();
+                SqlCommand comm = new SqlCommand("obtener_id", connec);
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@nick", login.username));
+                comm.Parameters.Add(new SqlParameter("@pass", login.password));
 
-        //        SqlCommand comm = new SqlCommand("obtener_id", conn);
-        //        comm.CommandType = System.Data.CommandType.StoredProcedure;
-        //        comm.Parameters.Add(new SqlParameter("@nick", loginRequest.username));
-        //        comm.Parameters.Add(new SqlParameter("@pass", loginRequest.password));
+                idUsuario = Convert.ToInt32(comm.ExecuteScalar());                
+             
+            }
+            return idUsuario;
+        }
+        public Usuario ObtenerUsuarioPorLogin(LoginRequest login)
+        {
 
-        //        SqlDataReader reader = comm.ExecuteReader();
+            string strConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            Usuario usuario = new Usuario();
 
-        //        if (reader.HasRows)
-        //        {
-        //            idUsuario = reader.GetInt32(0);
-        //        }
-        //    }
-        //    return idUsuario;
-        //}
+            using (SqlConnection connec = new SqlConnection(strConn))
+            {
+                connec.Open();
+
+                SqlCommand comm = new SqlCommand("generar_login", connec);
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@nick", login.username));
+                comm.Parameters.Add(new SqlParameter("@pass", login.password));
+
+
+                SqlDataReader reader = comm.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    usuario.IDUsuario = reader.GetInt32(0);
+                    usuario.Nick = reader.GetString(1);
+                    usuario.Pass = reader.GetString(2);
+                    usuario.Email = reader.GetString(3);
+                    usuario.Nombre = reader.GetString(4);
+                    usuario.Apellido = reader.GetString(5);
+                    usuario.Dni = reader.GetInt32(6);
+                }
+                reader.Close();
+            }
+
+            return usuario;
+        }
+
         public Usuario ModificarUsuario(Usuario usuarioModificado, int id)
         {
             string StrConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             
-            //Usuario usuarioModificado = new Usuario();
-
             usuarioModificado.IDUsuario = id;
             using (SqlConnection conn = new SqlConnection(StrConn))
             {
@@ -113,9 +137,8 @@ namespace WebApplication2.Gestores
 
             return usuarioModificado;
 
-
         }
 
-
+       
     }
 }

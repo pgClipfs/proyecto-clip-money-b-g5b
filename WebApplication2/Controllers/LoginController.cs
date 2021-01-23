@@ -49,7 +49,7 @@ namespace WebApplication2.Controllers
             if (isCredentialValid)
             {
                 var token = TokenGenerator.GenerateTokenJwt(login.username);
-                return Ok(token);
+                return Ok(new User(login.username, token));
             }
             else
             {

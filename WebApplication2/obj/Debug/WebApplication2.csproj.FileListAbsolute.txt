@@ -325,3 +325,6 @@ C:\Users\Facun\Desktop\CLIPMONEY WORKING TREE\NUEVAPI\proyecto-clip-money-b-g5b\
 C:\Users\Facun\Desktop\CLIPMONEY WORKING TREE\NUEVAPI\proyecto-clip-money-b-g5b\WebApplication2\obj\Debug\WebApplication2.csproj.CopyComplete
 C:\Users\Facun\Desktop\CLIPMONEY WORKING TREE\NUEVAPI\proyecto-clip-money-b-g5b\WebApplication2\obj\Debug\WebApplication2.dll
 C:\Users\Facun\Desktop\CLIPMONEY WORKING TREE\NUEVAPI\proyecto-clip-money-b-g5b\WebApplication2\obj\Debug\WebApplication2.pdb
+C:\Users\Agostina\source\repos\Clip\proyecto-clip-money-b-g5b\WebApplication2\bin\AWSSDK.dll
+C:\Users\Agostina\source\repos\Clip\proyecto-clip-money-b-g5b\WebApplication2\bin\LocalStorage.dll
+C:\Users\Agostina\source\repos\Clip\proyecto-clip-money-b-g5b\WebApplication2\bin\AWSSDK.pdb

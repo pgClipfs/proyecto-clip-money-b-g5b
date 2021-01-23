@@ -10,31 +10,32 @@ using WebApplication2.Gestores;
 
 namespace WebApplication2.Controllers
 {
-    [AllowAnonymous]
-    [RoutePrefix("api/account")]
-    public class AccountController : ApiController
-    {
-        [HttpPost]
-        [Route("modifyBalance")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IHttpActionResult PostSaldo([FromBody] Usuario usuario, [FromBody] string nombreOperacion, [FromBody] decimal monto)
-        {
-            int idCuenta;
-            int idUsuario;
-            decimal saldo;
-            GestorUsuario mUsuario = new GestorUsuario();
-            idUsuario = mUsuario.ObtenerId(usuario);
-            GestorCuenta gCuenta = new GestorCuenta();
-            idCuenta = gCuenta.ObtenerIdCuenta(idUsuario);
-            saldo = gCuenta.ModificarSaldo(idCuenta, nombreOperacion, monto);
-            if (saldo == 0)
-            {
-                return NotFound();
-            }
-            else
-            {
-                return Ok(saldo);
-            }
-        }
-    }
+    //[AllowAnonymous]
+    //[RoutePrefix("api/account")]
+    //public class AccountController : ApiController
+    //{
+    //    [HttpPost]
+    //    [Route("modifyBalance")]
+    //    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    //    public IHttpActionResult PostSaldo([FromBody] GestorSaldo gSaldo)
+    //    {
+    //        int idCuenta;
+    //        int idUsuario;
+    //        decimal saldo;
+    //        //Usuario usuarioN = gSaldo.Usuario;
+    //        GestorUsuario mUsuario = new GestorUsuario();
+    //        idUsuario = mUsuario.ObtenerId(gSaldo.Usuario);
+    //        GestorCuenta gCuenta = new GestorCuenta();
+    //        idCuenta = gCuenta.ObtenerIdCuenta(idUsuario);
+    //        saldo = gCuenta.ModificarSaldo(idCuenta, gSaldo.NombreOperacion, gSaldo.Monto);
+    //        if (saldo == 0)
+    //        {
+    //            return NotFound();
+    //        }
+    //        else
+    //        {
+    //            return Ok(saldo);
+    //        }
+    //    }
+    //}
 }
