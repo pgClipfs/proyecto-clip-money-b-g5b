@@ -1,0 +1,1 @@
+FACU : Data Source=DESKTOP-3G1CJ39;Initial Catalog=ClipMoneyReducida2;Integrated Security=True

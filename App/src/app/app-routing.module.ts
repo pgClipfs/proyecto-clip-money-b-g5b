@@ -4,12 +4,24 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './component/home/home.component';
 import { InicioSesionComponent } from './component/inicio-sesion/inicio-sesion.component';
 import { RegistroComponent} from './component/registro/registro.component';
+import { ModificarDatosComponent } from './modificar-datos/modificar-datos.component';
+import { UltMovimientosComponent } from './ult-movimientos/ult-movimientos.component';
+import { ExtraerComponent } from './extraer/extraer.component';
+import { TransferenciasComponent } from './transferencias/transferencias.component';
+import { GiroaldescubiertoComponent } from './giroaldescubierto/giroaldescubierto.component'
 
 const routes: Routes = [
   {path:'',component: HomeComponent},
   {path:'login',component: InicioSesionComponent},
-  {path:'register',component: RegistroComponent}
+  {path:'register',component: RegistroComponent},
+  {path: 'ModificarDatos',component: ModificarDatosComponent},
+  {path: 'ultimosMovimientos',component: UltMovimientosComponent},
+  {path: 'extracciones',component: ExtraerComponent},
+  {path: 'transferencias',component: TransferenciasComponent},
+  {path: 'giros',component: GiroaldescubiertoComponent}
+
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
