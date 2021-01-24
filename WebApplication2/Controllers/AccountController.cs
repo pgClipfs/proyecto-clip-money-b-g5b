@@ -17,13 +17,11 @@ namespace WebApplication2.Controllers
         [HttpGet]
         [Route("getBalance")]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IHttpActionResult GetSaldo ([FromBody]int idUsuario)
+        public IHttpActionResult GetSaldo ([FromUri]int idUsuario)
         {
-            decimal saldo;
-            int idCuenta;
             GestorCuenta gcuenta = new GestorCuenta();
-            idCuenta = gcuenta.ObtenerIdCuenta(idUsuario);
-            saldo = gcuenta.ObtenerSaldo(idCuenta);
+            int idCuenta = gcuenta.ObtenerIdCuenta(idUsuario);
+            decimal saldo = gcuenta.ObtenerSaldo(idCuenta);
 
             if (saldo == 0)
             {
