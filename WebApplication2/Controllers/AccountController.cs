@@ -32,21 +32,32 @@ namespace WebApplication2.Controllers
                 return Ok(saldo);
             }
         }
+        [HttpGet]
+        [Route("idBalance")]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public IHttpActionResult GetIdCuenta([FromUri] int idUsuario)
+        {
+            GestorCuenta gcuenta = new GestorCuenta();
+            int idCuenta = gcuenta.ObtenerIdCuenta(idUsuario);
+
+            if (idCuenta == 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(idCuenta);
+            }
+        }
+        //Necesito que el idCuenta que le paso con el get venga dentro del objeto operaciones
 
         [HttpPost]
         [Route("modifyBalance")]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PostSaldo(Operaciones nuevaOperacion)
         {
-            //int idCuenta;
-            //int idUsuario;
-            decimal saldo = 0;
-            //Usuario usuarioN = gSaldo.Usuario;
-            //GestorUsuario mUsuario = new GestorUsuario();
-            //idUsuario = mUsuario.ObtenerId(gSaldo.Usuario);
-            //GestorCuenta gCuenta = new GestorCuenta();
-            //idCuenta = gCuenta.ObtenerIdCuenta(idUsuario);
-            //saldo = gCuenta.ModificarSaldo(idCuenta, gSaldo.NombreOperacion, gSaldo.Monto);
+            GestorCuenta gCuenta = new GestorCuenta();
+            decimal saldo = gCuenta.ModificarSaldo(nuevaOperacion.IDCuenta, nuevaOperacion.Monto, nuevaOperacion.NombreOperacion);
             if (saldo == 0)
             {
                 return NotFound();

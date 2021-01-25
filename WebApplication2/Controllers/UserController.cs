@@ -41,7 +41,7 @@ namespace WebApplication2.Controllers
         [HttpGet]
         [Route("getId")]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IHttpActionResult GetObtenerIdUsusario([FromUri]LoginRequest login)
+        public IHttpActionResult GetObtenerIdUsusario(LoginRequest login)
         {
             int id;
             GestorUsuario gUsuario = new GestorUsuario();
