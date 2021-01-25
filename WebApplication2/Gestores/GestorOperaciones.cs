@@ -13,8 +13,25 @@ namespace WebApplication2.Gestores
         public Operaciones Extraer(int idCuenta)
         {
             Operaciones extraer = new Operaciones();
+            string StrConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+
+                using (SqlConnection conn = new SqlConnection(StrConn))
+                {
+                    conn.Open();
+
+                    SqlCommand comm = conn.CreateCommand();
+                    comm.CommandText = "generar_operacion";
+                    comm.CommandType = System.Data.CommandType.StoredProcedure;
+                    comm.Parameters.Add(new SqlParameter("@nombre", "Extraccion"));
+                    comm.Parameters.Add(new SqlParameter("@monto", extraer.Monto));
+                    comm.Parameters.Add(new SqlParameter("@fechaOperacion", extraer.FechaOperacion));
+                    comm.Parameters.Add(new SqlParameter("@idCuenta", idCuenta));
 
 
+                    extraer.IDOperacion = Convert.ToInt32(comm.ExecuteScalar());
+                    extraer.NombreOperacion = "Extraccion";
+
+                }
             return extraer;
         }
 

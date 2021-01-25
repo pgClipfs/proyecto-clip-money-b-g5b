@@ -54,11 +54,11 @@ namespace WebApplication2.Gestores
             return saldo;
         }
 
-        public decimal ModificarSaldo(int idCuenta, Operaciones nuevaOperacion)
+        public decimal ModificarSaldo(int idCuenta, decimal monto, string nombreOperacion)
         {
             string strConn = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            decimal saldo = 0;
             decimal nuevoSaldo = 0;
+            decimal saldo = 0;
 
             using (SqlConnection connec = new SqlConnection(strConn))
             {
@@ -72,37 +72,33 @@ namespace WebApplication2.Gestores
 
                 if (reader.Read())
                 {
-                    saldo = reader.GetInt32(2);
+                    saldo = reader.GetDecimal(2);
                 }
 
             }
 
-            //if (tipoOperacion == "Deposito")
-            //{
-            //    nuevoSaldo = saldo + monto;
-            //}
-            //if (tipoOperacion == "Extraccion")
-            //{
-            //    nuevoSaldo = saldo - monto;
-            //}
-            //if (tipoOperacion == "Transferencia")
-            //{
-            //    nuevoSaldo = saldo - monto;
-            //}
-            //if (tipoOperacion == "Giro al Descubierto")
-            //{
-            //    if (monto == (saldo * 0.10M))
-            //    {
-            //        nuevoSaldo = saldo - monto;
-            //    }
-            //    else
-            //    {
-            //        //Mensaje de error "Monto no apto para giro al descubierto"
-            //        //MessageBox.Show($"");
-            //        //Request.Flash("success", "Monto no apto para giro al descubierto");
-            //    }
+            switch (nombreOperacion)
+            {
+                case "Extraccion": 
+                    nuevoSaldo = saldo - monto;
+                    break;
+                case "Deposito":
+                    nuevoSaldo = saldo + monto;
+                    break;
+                case "Transferencia":
+                    nuevoSaldo = saldo - monto;
+                    break;
+                case "Giro al descubierto":
+                    if (monto == (saldo * 0.10M))
+                    {
+                        nuevoSaldo = saldo - monto;
+                    }
+                    break;
+                default:
+                    nuevoSaldo = saldo;
+                    break;
+            }
 
-            //}
             using (SqlConnection connec = new SqlConnection(strConn))
             {
                 connec.Open();
