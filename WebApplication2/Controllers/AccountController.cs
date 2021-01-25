@@ -57,8 +57,7 @@ namespace WebApplication2.Controllers
         public IHttpActionResult PostSaldo(Operaciones nuevaOperacion)
         {
             GestorCuenta gCuenta = new GestorCuenta();
-            int idCuenta = nuevaOperacion.IDCuenta;
-            decimal saldo = gCuenta.ModificarSaldo(idCuenta, nuevaOperacion.Monto, nuevaOperacion.NombreOperacion);
+            decimal saldo = gCuenta.ModificarSaldo(nuevaOperacion.IDCuenta, nuevaOperacion.Monto, nuevaOperacion.NombreOperacion);
             if (saldo == 0)
             {
                 return NotFound();
