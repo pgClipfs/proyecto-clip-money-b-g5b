@@ -51,6 +51,11 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
+import { ModificarDatosComponent } from './modificar-datos/modificar-datos.component';
+import { UltMovimientosComponent } from './ult-movimientos/ult-movimientos.component';
+import { ExtraerComponent } from './extraer/extraer.component';
+import { TransferenciasComponent } from './transferencias/transferencias.component';
+import { GiroaldescubiertoComponent } from './giroaldescubierto/giroaldescubierto.component';
 
 
 
@@ -72,7 +77,12 @@ import {MatTreeModule} from '@angular/material/tree';
     RegistroComponent,
     HomeComponent,
     PaginaPrincipalComponent,
-    TarjetaCuentaComponent
+    TarjetaCuentaComponent,
+    ModificarDatosComponent,
+    UltMovimientosComponent,
+    ExtraerComponent,
+    TransferenciasComponent,
+    GiroaldescubiertoComponent
   ],
   
   imports: [

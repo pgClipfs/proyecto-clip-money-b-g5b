@@ -18,7 +18,6 @@ namespace WebApplication2.Gestores
             using (SqlConnection connec = new SqlConnection(strConn))
             {
                 connec.Open();
-
                 SqlCommand comm = new SqlCommand("obtener_id_cuenta", connec);
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
                 comm.Parameters.Add(new SqlParameter("@idUsuario", idUsuario));
