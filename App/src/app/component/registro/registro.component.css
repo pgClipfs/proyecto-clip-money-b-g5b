@@ -1,0 +1,26 @@
+.lan{
+    padding-left: 25px;
+}
+
+.las{
+    display: inline-block;
+    
+    width: 70%;
+}
+
+#terminos{
+    
+    display: inline;
+    align-content: center;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.separator 
+{
+    margin: 10px;
+}

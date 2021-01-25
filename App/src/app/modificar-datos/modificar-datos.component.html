@@ -1,0 +1,58 @@
+<app-navsup></app-navsup>
+<mat-card>
+    <mat-card-title>Modificar Datos</mat-card-title>
+    <form  [formGroup]= "formGroup" (ngSubmit)="onSubmit()" >
+
+
+        <div> 
+        <mat-form-field appearance="fill" class="separator">
+            <mat-label>Usuario</mat-label>
+            <input matInput type="text"formControlName="Nick">
+        </mat-form-field>
+   
+
+
+        <mat-form-field appearance="fill" class="separator">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password"formControlName="Pass">
+        </mat-form-field>
+    </div>
+
+
+
+         <div> 
+             
+
+        <mat-form-field appearance="fill" class="separator">
+            <mat-label>email</mat-label>
+            <input matInput type="email"formControlName="Email">
+        </mat-form-field>
+ 
+
+        <mat-form-field appearance="fill" class="separator">
+            <mat-label>Nombre</mat-label>
+            <input matInput type="text"formControlName="Nombre">
+        </mat-form-field>
+    </div>
+
+    <div> 
+
+        <mat-form-field appearance="fill" class="separator">
+            <mat-label>Apellido</mat-label>
+            <input matInput type="text"formControlName="Apellido">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="separator">
+            <mat-label>DNI</mat-label>
+            <input  matInput type="number"formControlName="Dni">
+        </mat-form-field>
+
+    </div>
+
+
+ 
+ 
+
+        <button mat-raised-button color="primary" type="submit" class="buton" routerLink="/login" >Modificar </button>
+    </form>
+</mat-card>

@@ -1,0 +1,26 @@
+<app-navsup></app-navsup>
+        <mat-card class="card-con">
+        <mat-card-title>Inicio Sesion</mat-card-title>
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+        <mat-form-field appearance="fill" class="separator">
+            <mat-label>Usuario</mat-label>
+            <input matInput type="text"formControlName="username">
+        </mat-form-field>
+
+<mat-divider></mat-divider>
+
+
+<mat-form-field appearance="fill" class="separator">
+    <mat-label>Contraseña</mat-label>
+    <input matInput type="password"formControlName="password">
+</mat-form-field>
+        <mat-card-actions>
+            <button type="submit" mat-raised-button color="primary">Login</button>
+        </mat-card-actions>
+        
+
+
+
+    </form>
+        </mat-card>
