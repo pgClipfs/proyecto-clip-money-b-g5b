@@ -17,6 +17,10 @@ export class UsuarioService {
 
   base2='https://localhost:44397/api/register/newUser'
 
+  base3='https://localhost:44397/api/register/getUser'
+
+  base4 ='https://localhost:44397/api/register/getId'
+
 NewUser(usuario : any) :Observable<any>{
     
     return this.httpuser.post(this.base2,usuario);
@@ -27,5 +31,11 @@ NewUser(usuario : any) :Observable<any>{
     
     return this.httpuser.post(this.base1,login);
   }
+  getUsuario(userdata: any):Observable <any>{
+    return this.httpuser.post(this.base3,userdata);
+  }
 
+  getIdUsuario(userid:any):Observable<any>{
+    return this.httpuser.post(this.base4,userid);
+  }
 }
