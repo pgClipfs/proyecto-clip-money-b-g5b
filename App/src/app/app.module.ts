@@ -11,7 +11,6 @@ import { InicioSesionComponent } from './component/inicio-sesion/inicio-sesion.c
 import { RegistroComponent } from './component/registro/registro.component';
 import { HomeComponent } from './component/home/home.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http'
 import { UsuarioService } from './servicios/usuario.service';
 import { PaginaPrincipalComponent } from './component/pagina-principal/pagina-principal.component';
 import { TarjetaCuentaComponent } from './component/tarjeta-cuenta/tarjeta-cuenta.component';
@@ -56,8 +55,9 @@ import { UltMovimientosComponent } from './ult-movimientos/ult-movimientos.compo
 import { ExtraerComponent } from './extraer/extraer.component';
 import { TransferenciasComponent } from './transferencias/transferencias.component';
 import { GiroaldescubiertoComponent } from './giroaldescubierto/giroaldescubierto.component';
-
-
+import { JwtInterceptor } from './helper/jwt.interceptor';
+import { ErrorInterceptor } from './helper/error.interceptor';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 
 
@@ -128,7 +128,10 @@ MatSortModule ,
  MatTreeModule
 
   ],
-  providers: [UsuarioService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

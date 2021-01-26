@@ -37,7 +37,7 @@ export class RegistroComponent implements OnInit {
       
       const body = this.formGroup.value;
       
-      this.usuario.NewUser(body).subscribe(a => console.log(a))
+      this.usuario.PostNewUsuario(body).subscribe(a => console.log(a))
 
     }
 

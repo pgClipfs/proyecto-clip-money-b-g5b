@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {UsuarioService} from '../../servicios/usuario.service';
+import {AuthInterceptorService} from '../../servicios/auth-interceptor.service';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-inicio-sesion',
   templateUrl: './inicio-sesion.component.html',
@@ -8,10 +10,16 @@ import {UsuarioService} from '../../servicios/usuario.service';
 })
 export class InicioSesionComponent implements OnInit {
   formGroup: FormGroup;
-  
+  returnUrl: string;
+  error = '';
+  cliente:string;
   constructor(
     private fb:FormBuilder,
     private usuario:UsuarioService,
+    private authenticationService: AuthInterceptorService,
+    private route: ActivatedRoute,
+    private router: Router,
+    
   ) { }
   form(){
     this.formGroup=this.fb.group({
@@ -21,19 +29,24 @@ export class InicioSesionComponent implements OnInit {
      });
   }
   ngOnInit(): void {
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/TarjetaCuenta';
     this.form();
   }
 
   onSubmit(){
     const login = this.formGroup.value;
-/*     var Username = this.formGroup.value(username);
-    localStorage.setItem("Username", Username);
-    var Password = this.formGroup.value(password);
-    localStorage.setItem("Password", Password); */
-    console.log(login);
-    console.log(this.formGroup)
-    this.usuario.postUsuario(login).subscribe(Body => console.log(Body));
-    
+    this.cliente=login.username.value;
+   
+    //console.log(login.username.value)
+    this.usuario.postUsuario(login)
+      .subscribe(
+        data => {
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          this.error = error;
+        }
+      );
     
   }
 }

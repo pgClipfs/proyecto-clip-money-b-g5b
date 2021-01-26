@@ -35,8 +35,7 @@ export class ModificarDatosComponent implements OnInit {
   onSubmit(){
       
     const body = this.formGroup.value;
-    
-    this.usuario.NewUser(body).subscribe(a => console.log(a))
+
 
   }
 

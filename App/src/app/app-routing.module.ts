@@ -10,17 +10,19 @@ import { ExtraerComponent } from './extraer/extraer.component';
 import { TransferenciasComponent } from './transferencias/transferencias.component';
 import { GiroaldescubiertoComponent } from './giroaldescubierto/giroaldescubierto.component'
 import { TarjetaCuentaComponent } from './component/tarjeta-cuenta/tarjeta-cuenta.component';
+import { AuthGuard } from './helper/auth.guard';
+
 
 const routes: Routes = [
   {path:'',component: HomeComponent},
   {path:'login',component: InicioSesionComponent},
   {path:'register',component: RegistroComponent},
-  {path: 'ModificarDatos',component: ModificarDatosComponent},
-  {path: 'ultimosMovimientos',component: UltMovimientosComponent},
-  {path: 'extracciones',component: ExtraerComponent},
-  {path: 'transferencias',component: TransferenciasComponent},
-  {path: 'giros',component: GiroaldescubiertoComponent},
-  {path: 'TarjetaCuenta',component: TarjetaCuentaComponent},
+  {path: 'ModificarDatos',component: ModificarDatosComponent,canActivate:[AuthGuard]},
+  {path: 'ultimosMovimientos',component: UltMovimientosComponent,canActivate:[AuthGuard]},
+  {path: 'extracciones',component: ExtraerComponent,canActivate:[AuthGuard]},
+  {path: 'transferencias',component: TransferenciasComponent,canActivate:[AuthGuard]},
+  {path: 'giros',component: GiroaldescubiertoComponent,canActivate:[AuthGuard]},
+  {path: 'TarjetaCuenta',component: TarjetaCuentaComponent,canActivate:[AuthGuard]},
 
 
 ];
