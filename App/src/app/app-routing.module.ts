@@ -9,6 +9,7 @@ import { UltMovimientosComponent } from './ult-movimientos/ult-movimientos.compo
 import { ExtraerComponent } from './extraer/extraer.component';
 import { TransferenciasComponent } from './transferencias/transferencias.component';
 import { GiroaldescubiertoComponent } from './giroaldescubierto/giroaldescubierto.component'
+import { TarjetaCuentaComponent } from './component/tarjeta-cuenta/tarjeta-cuenta.component';
 
 const routes: Routes = [
   {path:'',component: HomeComponent},
@@ -18,7 +19,9 @@ const routes: Routes = [
   {path: 'ultimosMovimientos',component: UltMovimientosComponent},
   {path: 'extracciones',component: ExtraerComponent},
   {path: 'transferencias',component: TransferenciasComponent},
-  {path: 'giros',component: GiroaldescubiertoComponent}
+  {path: 'giros',component: GiroaldescubiertoComponent},
+  {path: 'TarjetaCuenta',component: TarjetaCuentaComponent},
+
 
 ];
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-tarjeta-cuenta',
   templateUrl: './tarjeta-cuenta.component.html',
